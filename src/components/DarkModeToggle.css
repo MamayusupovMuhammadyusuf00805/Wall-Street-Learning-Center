@@ -1,0 +1,335 @@
+.dark-mode-toggle {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1) rotate(20deg);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+*,
+*::before,
+*::after {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+body.dark-mode {
+    background: #1a1a2e;
+    color: #eee;
+}
+
+body.dark-mode .homepage,
+body.dark-mode .courses-section,
+body.dark-mode .community-page,
+body.dark-mode .resultspage,
+body.dark-mode .testimonials-page,
+body.dark-mode .teachers-page,
+body.dark-mode .admin-panel {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+body.dark-mode .navbar-main {
+    background: rgba(26, 26, 46, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .navbar-main.scrolled {
+    background: rgba(22, 33, 62, 0.98) !important;
+}
+
+body.dark-mode .nav-links a {
+    color: #eee !important;
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+    color: #667eea !important;
+}
+
+body.dark-mode .nav-links a::after {
+    background-color: #667eea !important;
+}
+
+body.dark-mode .logo-section h2 {
+    color: #eee !important;
+}
+
+body.dark-mode .bar-line {
+    background: #eee !important;
+}
+
+body.dark-mode .lang-btn {
+    background: #16213e !important;
+    color: #eee !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.dark-mode .lang-btn:hover {
+    background: #1a1a2e !important;
+    border-color: #667eea !important;
+    color: #667eea !important;
+}
+
+body.dark-mode .lang-btn i {
+    color: #eee !important;
+}
+
+body.dark-mode .lang-dropdown {
+    background: #16213e !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .lang-option {
+    color: #eee !important;
+}
+
+body.dark-mode .lang-option:hover {
+    background: #1a1a2e !important;
+    color: #667eea !important;
+}
+
+body.dark-mode .lang-option.active {
+    background: #1a1a2e !important;
+    color: #667eea !important;
+}
+
+body.dark-mode .signin-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+}
+
+body.dark-mode .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/imgs/unnamed.jpg);
+}
+
+body.dark-mode .hero h1,
+body.dark-mode .hero h3,
+body.dark-mode .hero p {
+    color: #eee !important;
+}
+
+body.dark-mode .stat-item,
+body.dark-mode .level-card,
+body.dark-mode .course-card,
+body.dark-mode .community-card,
+body.dark-mode .result-card,
+body.dark-mode .testimonial-card,
+body.dark-mode .teacher-card,
+body.dark-mode .admin-header,
+body.dark-mode .tab-navigation {
+    background: #16213e !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .course-wrapper {
+    background: transparent !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode .stat-number,
+body.dark-mode .level-card__title,
+body.dark-mode .course-card__title,
+body.dark-mode .teacher-content h3,
+body.dark-mode .testimonial-info h3 {
+    color: #eee !important;
+}
+
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode .stat-title,
+body.dark-mode .course-card__desc,
+body.dark-mode .testimonial-text,
+body.dark-mode .detail-item {
+    color: #b8b8d1 !important;
+}
+
+body.dark-mode .level-row__progress-wrapper {
+    background-color: #1a1a2e !important;
+}
+
+body.dark-mode .level-row__progress-fill {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+body.dark-mode .footer {
+    background: #16213e !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .footer h3,
+body.dark-mode .footer h4,
+body.dark-mode .footer a {
+    color: #eee !important;
+}
+
+body.dark-mode .footer p {
+    color: #b8b8d1 !important;
+}
+
+body.dark-mode .footer__socials a {
+    background: #1a1a2e !important;
+    color: #667eea !important;
+}
+
+body.dark-mode .modal-content,
+body.dark-mode .login-card {
+    background: #16213e !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background: #1a1a2e !important;
+    color: #eee !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    background: #16213e !important;
+    border-color: #667eea !important;
+    color: #eee !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #6b7280 !important;
+    opacity: 1 !important;
+}
+
+body.dark-mode .form-group label {
+    color: #eee !important;
+}
+
+body.dark-mode .input-group input {
+    background: #1a1a2e !important;
+    color: #eee !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.dark-mode .input-group input:focus {
+    background: #16213e !important;
+    border-color: #667eea !important;
+    color: #eee !important;
+}
+
+body.dark-mode .input-group i {
+    color: #b8b8d1 !important;
+}
+
+body.dark-mode .toggle-password {
+    color: #b8b8d1 !important;
+}
+
+body.dark-mode .toggle-password:hover {
+    color: #667eea !important;
+}
+
+body.dark-mode .tab-btn {
+    color: #b8b8d1 !important;
+}
+
+body.dark-mode .tab-btn:hover {
+    background: #1a1a2e !important;
+    color: #eee !important;
+}
+
+body.dark-mode .tab-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+}
+
+body.dark-mode .section1,
+body.dark-mode .section2 {
+    background: #1a1a2e !important;
+}
+
+body.dark-mode .cta-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+body.dark-mode .admin-login {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+body.dark-mode .login-header i {
+    color: #667eea !important;
+}
+
+body.dark-mode .login-header h2,
+body.dark-mode .modal-header h2 {
+    color: #eee !important;
+}
+
+body.dark-mode .login-header p,
+body.dark-mode .modal-header p {
+    color: #b8b8d1 !important;
+}
+
+body.dark-mode .course-badge,
+body.dark-mode .level-row__badge {
+    opacity: 0.9;
+}
+
+body.dark-mode .result-card {
+    background: #16213e !important;
+}
+
+body.dark-mode .result-overlay {
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+
+body.dark-mode .nav-links.active {
+    background: rgba(22, 33, 62, 0.98) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode::-webkit-scrollbar {
+    width: 10px;
+}
+
+body.dark-mode::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 5px;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+@media (max-width: 768px) {
+    .dark-mode-toggle {
+        top: 80px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
