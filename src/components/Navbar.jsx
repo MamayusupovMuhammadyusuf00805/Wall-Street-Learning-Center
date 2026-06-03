@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { sendToTelegram } from '../config/telegram';
+import DarkModeToggle from './DarkModeToggle';
 import "./Navbar.css";
 
 function Navbar() {
@@ -134,6 +135,8 @@ function Navbar() {
             </ul>
 
             <div className={`nav-btns ${isMobileMenuOpen ? "active" : ""}`}>
+              <DarkModeToggle />
+              
               <div className="language-selector">
                 <button 
                   type="button" 
@@ -193,11 +196,22 @@ function Navbar() {
       </nav>
 
       {isModalOpen && (
-        <div className="reg-overlay" onClick={toggleModal}>
-          <div className="reg-content" onClick={(e) => e.stopPropagation()}>
+        <div className={`reg-overlay ${isModalOpen ? 'active' : ''}`} onClick={toggleModal}>
+          <div className={`reg-content ${isModalOpen ? 'active' : ''}`} onClick={(e) => e.stopPropagation()}>
+            <div className="modal-decoration">
+              <div className="decoration-circle circle-1"></div>
+              <div className="decoration-circle circle-2"></div>
+              <div className="decoration-circle circle-3"></div>
+            </div>
+            
             <button className="close-x" onClick={toggleModal}>
-              &times;
+              <i className="fa-solid fa-xmark"></i>
             </button>
+            
+            <div className="modal-icon">
+              <i className="fa-solid fa-graduation-cap"></i>
+            </div>
+            
             <div className="reg-header">
               <h2>{t('register.title')}</h2>
               <p>{t('register.subtitle')}</p>
@@ -205,18 +219,21 @@ function Navbar() {
             
             {submitStatus === 'success' && (
               <div className="alert alert-success">
-                <i className="fa-solid fa-circle-check"></i> {t('register.success')}
+                <i className="fa-solid fa-circle-check"></i>
+                <span>{t('register.success')}</span>
               </div>
             )}
             
             {submitStatus === 'error' && (
               <div className="alert alert-error">
-                <i className="fa-solid fa-circle-xmark"></i> {t('register.error')}
+                <i className="fa-solid fa-circle-xmark"></i>
+                <span>{t('register.error')}</span>
               </div>
             )}
             
             <form className="reg-form" onSubmit={handleSubmit}>
               <div className="input-group">
+                <i className="fa-solid fa-user"></i>
                 <input 
                   type="text" 
                   name="name"
@@ -228,6 +245,7 @@ function Navbar() {
                 />
               </div>
               <div className="input-group">
+                <i className="fa-solid fa-phone"></i>
                 <input 
                   type="tel" 
                   name="phone"
@@ -245,10 +263,14 @@ function Navbar() {
               >
                 {isSubmitting ? (
                   <>
-                    <i className="fa-solid fa-spinner fa-spin"></i> {t('register.button')}...
+                    <i className="fa-solid fa-spinner fa-spin"></i>
+                    <span>{t('register.button')}...</span>
                   </>
                 ) : (
-                  t('register.button')
+                  <>
+                    <span>{t('register.button')}</span>
+                    <i className="fa-solid fa-arrow-right"></i>
+                  </>
                 )}
               </button>
               <button

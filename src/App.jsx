@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import './App.css'
 import Navbar from './components/Navbar'
 import FloatingContact from './components/FloatingContact'
-import DarkModeToggle from './components/DarkModeToggle'
 import Home from './pages/home/Home'
 import About from './pages/about/About'
 import Admin from './pages/admin/Admin'
@@ -131,7 +130,6 @@ function App() {
       <Navbar /> 
       <AnimatedRoutes />
       <FloatingContact />
-      <DarkModeToggle />
       <Footer/>
     </BrowserRouter>
   )

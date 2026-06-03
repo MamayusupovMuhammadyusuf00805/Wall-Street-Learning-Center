@@ -105,7 +105,8 @@ function About() {
             <p>{t('about.subtitle')}</p>
           </div>
           <button className="admin-link-btn" onClick={() => navigate('/admin')}>
-            <i className="fa-solid fa-user-shield"></i> Admin Panel
+            <i className="fa-solid fa-user-shield"></i>
+            <span>Admin Panel</span>
           </button>
         </div>
 

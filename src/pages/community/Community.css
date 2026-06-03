@@ -13,6 +13,18 @@
     min-height: 100vh;
     background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
     padding: 60px 0;
+    animation: fadeInPage 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .container {
@@ -24,7 +36,7 @@
 .scroll-animate {
     opacity: 0;
     transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .scroll-animate.animate-in {
@@ -33,7 +45,7 @@
 }
 
 .scroll-animate.animate-in .community-card {
-    animation: slideUpFade 0.6s ease-out both;
+    animation: slideUpFade 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 .scroll-animate.animate-in .community-card:nth-child(1) { animation-delay: 0.1s; }
@@ -46,11 +58,11 @@
 @keyframes slideUpFade {
     from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(60px) scale(0.9);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -97,24 +109,42 @@
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation: scaleIn 0.6s ease-out both;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: scaleIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.community-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.community-card:hover::before {
+    left: 100%;
 }
 
 @keyframes scaleIn {
     from {
         opacity: 0;
-        transform: scale(0.8) translateY(30px);
+        transform: scale(0.85) translateY(40px) rotateX(10deg);
     }
     to {
         opacity: 1;
-        transform: scale(1) translateY(0);
+        transform: scale(1) translateY(0) rotateX(0deg);
     }
 }
 
 .community-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(11, 61, 124, 0.2);
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(11, 61, 124, 0.25);
 }
 
 .community-icon {
@@ -125,11 +155,11 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto 25px;
-    transition: all 0.4s ease;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .community-card:hover .community-icon {
-    transform: rotate(360deg) scale(1.1);
+    transform: rotate(360deg) scale(1.15);
 }
 
 .community-icon i {
