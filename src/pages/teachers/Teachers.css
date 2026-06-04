@@ -266,3 +266,256 @@
         font-size: 20px;
     }
 }
+
+
+/* ============================================
+   ENHANCED RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+/* Ultra small devices */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .teachers-page {
+        padding: 25px 0;
+    }
+
+    .teachers-header {
+        margin-bottom: 40px;
+    }
+
+    .teachers-header h1 {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    .teachers-header p {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+
+    .admin-link-btn {
+        padding: 10px 24px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .teachers-grid {
+        gap: 20px;
+    }
+
+    .teacher-card {
+        border-radius: 18px;
+    }
+
+    .teacher-image-wrapper {
+        height: 240px;
+    }
+
+    .teacher-content {
+        padding: 22px;
+    }
+
+    .teacher-content h3 {
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+
+    .teacher-position {
+        font-size: 15px;
+        margin-bottom: 18px;
+    }
+
+    .detail-item {
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    .detail-item i {
+        font-size: 15px;
+        width: 18px;
+    }
+
+    .rating i {
+        font-size: 15px;
+    }
+
+    .teacher-overlay {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 320px) {
+    .teachers-header h1 {
+        font-size: 24px;
+    }
+
+    .teachers-header p {
+        font-size: 14px;
+    }
+
+    .teacher-image-wrapper {
+        height: 220px;
+    }
+
+    .teacher-content {
+        padding: 20px;
+    }
+
+    .teacher-content h3 {
+        font-size: 20px;
+    }
+
+    .teacher-position {
+        font-size: 14px;
+    }
+
+    .detail-item {
+        font-size: 12px;
+    }
+}
+
+/* Tablet landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .teachers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+
+    .teacher-image-wrapper {
+        height: 280px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .teachers-page {
+        padding: 45px 0;
+    }
+
+    .teachers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .teacher-image-wrapper {
+        height: 220px;
+    }
+
+    .teacher-content {
+        padding: 22px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .teachers-grid {
+        grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+        gap: 40px;
+    }
+
+    .teacher-image-wrapper {
+        height: 320px;
+    }
+
+    .teacher-content {
+        padding: 28px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .teachers-grid {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 45px;
+    }
+
+    .teacher-image-wrapper {
+        height: 350px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+
+    .teachers-header h1 {
+        font-size: 48px;
+    }
+
+    .teachers-header p {
+        font-size: 22px;
+    }
+
+    .teachers-grid {
+        grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+        gap: 50px;
+    }
+
+    .teacher-image-wrapper {
+        height: 380px;
+    }
+
+    .teacher-content {
+        padding: 30px;
+    }
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .teacher-card {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .teacher-overlay {
+        display: none;
+    }
+
+    .admin-link-btn {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+
+    .detail-item {
+        padding: 8px 0;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .teacher-card,
+    .teacher-image,
+    .teacher-overlay {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* High resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .teacher-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Empty state styles */
+.teachers-grid:empty::before {
+    content: 'O\'qituvchilar topilmadi';
+    display: block;
+    text-align: center;
+    padding: 80px 20px;
+    color: #64748b;
+    font-size: 18px;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 480px) {
+    .teachers-grid:empty::before {
+        padding: 60px 16px;
+        font-size: 16px;
+    }
+}

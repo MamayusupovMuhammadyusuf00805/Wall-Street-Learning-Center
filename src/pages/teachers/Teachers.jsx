@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import './Teachers.css';
 
 function Teachers() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [teachers, setTeachers] = useState([]);
   const observerRef = useRef(null);
 
@@ -17,31 +15,31 @@ function Teachers() {
       const defaultTeachers = [
         {
           id: 1,
-          name: "John Smith",
-          position: "IELTS Expert",
+          name: "Doniyorbek Abdurahmonov",
+          position: "IELTS Expert & Head Teacher",
           experience: "10+ yil tajriba",
           education: "Cambridge CELTA, TESOL",
-          image: "/imgs/Gemini_Generated_Image_69q1t969q1t969q1.png",
+          image: "/imgs/doniyorbek.jpg",
           specialization: "IELTS, Academic English",
           rating: 5
         },
         {
           id: 2,
-          name: "Sarah Johnson",
+          name: "Ulu'gbek Ergashov",
           position: "General English Teacher",
-          experience: "8 yil tajriba",
+          experience: "10+ yil tajriba",
           education: "MA in English Literature",
-          image: "/imgs/Gemini_Generated_Image_55wgp355wgp355wg.png",
+          image: "/imgs/ulugbek.jpg",
           specialization: "Speaking, Grammar",
           rating: 5
         },
         {
           id: 3,
-          name: "Michael Brown",
+          name: "Sitora Tohirjonova",
           position: "Business English Specialist",
-          experience: "12 yil tajriba",
+          experience: "5+ yil tajriba",
           education: "MBA, TESOL Certificate",
-          image: "/imgs/70ab8bd6-4479-4af4-9a00-0b406a6acaaa.png",
+          image: "/imgs/sitora.jpg",
           specialization: "Business English, Presentations",
           rating: 5
         }
@@ -85,9 +83,6 @@ function Teachers() {
         <div className="teachers-header scroll-animate">
           <h1>Bizning o'qituvchilar</h1>
           <p>Professional va tajribali mutaxassislar</p>
-          <button className="admin-link-btn" onClick={() => navigate('/admin')}>
-            <i className="fa-solid fa-user-shield"></i> Admin Panel
-          </button>
         </div>
 
         <div className="teachers-grid scroll-animate">

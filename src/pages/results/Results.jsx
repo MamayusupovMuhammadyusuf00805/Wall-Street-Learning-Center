@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import "./Results.css";
 
 function Results() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [selectedImg, setSelectedImg] = useState(null);
   const [results, setResults] = useState([]);
   const observerRef = useRef(null);
@@ -73,9 +71,6 @@ function Results() {
         <div className="results-header scroll-animate">
           <h1 className="res1">{t('results.title')}</h1>
           <p className="res2">{t('results.subtitle')}</p>
-          <button className="admin-link-btn" onClick={() => navigate('/admin')}>
-            <i className="fa-solid fa-user-shield"></i> Admin Panel
-          </button>
         </div>
         <div className="results-grid scroll-animate">
           {results.length === 0 ? (

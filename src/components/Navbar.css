@@ -119,6 +119,34 @@
     color: var(--primary);
 }
 
+/* Admin link special styling */
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px !important;
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white !important;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.admin-nav-link::after {
+    display: none;
+}
+
+.admin-nav-link:hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(139, 92, 246, 0.45);
+}
+
+.admin-nav-link i {
+    font-size: 16px;
+}
+
 .nav-btns {
     display: flex;
     align-items: center;
@@ -545,8 +573,9 @@ body.dark-mode .nav-btns .dark-mode-toggle:hover i {
     transform: translateY(-50%);
     color: var(--text-light);
     font-size: 16px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     pointer-events: none;
+    z-index: 1;
 }
 
 .input-group input {
@@ -557,7 +586,17 @@ body.dark-mode .nav-btns .dark-mode-toggle:hover i {
     border-radius: 14px;
     outline: none;
     font-size: 15px;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.input-group input::placeholder {
+    color: #cbd5e1;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.input-group input:focus::placeholder {
+    opacity: 0.4;
 }
 
 .input-group input:focus {
@@ -565,12 +604,59 @@ body.dark-mode .nav-btns .dark-mode-toggle:hover i {
     background: #ffffff;
     box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.1);
     transform: translateY(-3px);
+    padding-top: 22px;
+    padding-bottom: 10px;
 }
 
-.input-group input:focus + i,
-.input-group:focus-within i {
+/* Phone input special - no padding change on focus */
+.input-group input[name="phone"]:focus {
+    padding: 16px 20px 16px 50px;
+}
+
+.input-group input:focus ~ i,
+.input-group input:not(:placeholder-shown) ~ i {
     color: var(--primary);
-    transform: translateY(-50%) scale(1.1);
+    top: 10px;
+    transform: translateY(0) scale(0.85);
+    left: 14px;
+}
+
+/* Phone input icon - stay in place */
+.input-group input[name="phone"] ~ i {
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.input-group input[name="phone"]:focus ~ i {
+    color: var(--primary);
+    top: 50%;
+    transform: translateY(-50%) scale(1.15);
+    left: 18px;
+}
+
+/* Label effect */
+.input-group label {
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    font-size: 15px;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: white;
+    padding: 0 5px;
+    opacity: 0.7;
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: -8px;
+    left: 46px;
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 600;
+    opacity: 1;
+    letter-spacing: 0.3px;
 }
 
 .submit-btn {
@@ -733,18 +819,20 @@ body.dark-mode .nav-btns .dark-mode-toggle:hover i {
         height: 50px;
     }
 
-    .nav-links,
-    .nav-btns {
+    .nav-links {
         position: fixed;
         top: 70px;
         left: -100%;
         width: 100%;
+        height: calc(100vh - 70px);
         flex-direction: column;
         background: #ffffff;
-        padding: 30px 0;
+        padding: 20px 0 120px 0;
         transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         gap: 20px;
+        overflow-y: auto;
+        z-index: 999;
     }
 
     .nav-links.active {
@@ -757,10 +845,20 @@ body.dark-mode .nav-btns .dark-mode-toggle:hover i {
     }
 
     .nav-btns {
-        top: 340px;
-        padding: 20px 0;
-        box-shadow: none;
-        border-top: 1px solid #e2e8f0;
+        position: fixed;
+        bottom: 0;
+        left: -100%;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 15px 0;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+        border-top: 2px solid #e2e8f0;
+        gap: 12px;
+        z-index: 1000;
+        transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s;
     }
 
     .nav-btns.active {
@@ -781,10 +879,11 @@ body.dark-mode .nav-btns .dark-mode-toggle:hover i {
 
     .lang-dropdown {
         position: fixed;
-        top: 140px;
+        bottom: 70px;
         left: 50%;
         transform: translateX(-50%);
         width: 200px;
+        z-index: 1001;
     }
 
     .lang-dropdown.active {
@@ -878,15 +977,34 @@ body.dark-mode .input-group input {
     border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
+body.dark-mode .input-group input::placeholder {
+    color: #64748b;
+}
+
 body.dark-mode .input-group input:focus {
     background: #16213e !important;
     border-color: #667eea !important;
     box-shadow: 0 0 0 5px rgba(102, 126, 234, 0.2) !important;
 }
 
-body.dark-mode .input-group input:focus + i,
-body.dark-mode .input-group:focus-within i {
+body.dark-mode .input-group input:focus ~ i,
+body.dark-mode .input-group input:not(:placeholder-shown) ~ i {
     color: #667eea !important;
+}
+
+body.dark-mode .input-group input[name="phone"]:focus ~ i {
+    color: #667eea !important;
+}
+
+body.dark-mode .input-group label {
+    background: #16213e;
+    color: #b8b8d1 !important;
+}
+
+body.dark-mode .input-group input:focus ~ label,
+body.dark-mode .input-group input:not(:placeholder-shown) ~ label {
+    color: #667eea !important;
+    background: #16213e;
 }
 
 body.dark-mode .submit-btn {
@@ -921,4 +1039,424 @@ body.dark-mode .alert-error {
     background: linear-gradient(135deg, rgba(153, 27, 27, 0.3) 0%, rgba(153, 27, 27, 0.2) 100%);
     color: #fca5a5 !important;
     border-color: rgba(252, 165, 165, 0.4);
+}
+
+/* Dark mode Admin link */
+body.dark-mode .admin-nav-link {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+    box-shadow: 0 4px 12px rgba(167, 139, 250, 0.4);
+}
+
+body.dark-mode .admin-nav-link:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    box-shadow: 0 6px 16px rgba(167, 139, 250, 0.6);
+}
+
+
+/* ============================================
+   ENHANCED RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+/* Ultra small devices */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .bar {
+        height: 65px;
+    }
+
+    .logo-section img {
+        height: 42px;
+    }
+
+    .hamburger {
+        width: 24px;
+    }
+
+    .bar-line {
+        width: 24px;
+        height: 2.5px;
+    }
+
+    .nav-links {
+        top: 65px;
+        height: calc(100vh - 65px);
+        padding: 16px 0 115px 0;
+    }
+
+    .nav-links a {
+        font-size: 15px;
+        padding: 10px 0;
+    }
+
+    .admin-nav-link {
+        padding: 10px 18px !important;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .admin-nav-link i {
+        font-size: 15px;
+    }
+
+    .nav-btns {
+        padding: 12px 0;
+        height: auto;
+    }
+
+    .nav-btns .dark-mode-toggle {
+        width: 180px;
+        height: 42px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+
+    .lang-btn {
+        padding: 10px 18px;
+        font-size: 13px;
+        min-width: 180px;
+        border-radius: 10px;
+    }
+
+    .signin-btn {
+        padding: 10px 22px;
+        font-size: 14px;
+        width: 180px;
+        border-radius: 10px;
+    }
+
+    .lang-dropdown {
+        width: 180px;
+        border-radius: 10px;
+    }
+
+    .lang-option {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .lang-option .flag {
+        font-size: 18px;
+    }
+
+    .reg-content {
+        width: 94%;
+        padding: 28px 22px;
+        border-radius: 26px;
+    }
+
+    .modal-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+        margin-bottom: 22px;
+    }
+
+    .reg-header h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .reg-header p {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .input-group {
+        gap: 16px;
+    }
+
+    .input-group input {
+        padding: 14px 18px 14px 48px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    .input-group i {
+        left: 16px;
+        font-size: 15px;
+    }
+
+    .input-group label {
+        left: 48px;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        padding: 15px 26px;
+        font-size: 15px;
+        border-radius: 12px;
+        margin-top: 10px;
+    }
+
+    .submit-btn i {
+        font-size: 17px;
+    }
+
+    .cancel-btn {
+        font-size: 14px;
+        padding: 10px;
+        margin-top: 6px;
+    }
+
+    .close-x {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        top: 18px;
+        right: 18px;
+    }
+
+    .alert {
+        padding: 12px 16px;
+        font-size: 13px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+    }
+
+    .alert i {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .bar {
+        height: 60px;
+    }
+
+    .logo-section img {
+        height: 38px;
+    }
+
+    .nav-links {
+        top: 60px;
+        height: calc(100vh - 60px);
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .admin-nav-link {
+        padding: 9px 16px !important;
+        font-size: 14px;
+    }
+
+    .nav-btns .dark-mode-toggle,
+    .lang-btn,
+    .signin-btn {
+        width: 160px;
+        height: 40px;
+        font-size: 13px;
+    }
+
+    .lang-dropdown {
+        width: 160px;
+    }
+
+    .reg-content {
+        padding: 24px 18px;
+    }
+
+    .modal-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 30px;
+    }
+
+    .reg-header h2 {
+        font-size: 22px;
+    }
+}
+
+/* Tablet landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .bar {
+        height: 75px;
+    }
+
+    .logo-section img {
+        height: 56px;
+    }
+
+    .nav-links {
+        gap: 30px;
+    }
+
+    .nav-links a {
+        font-size: 15px;
+    }
+}
+
+/* Desktop improvements */
+@media (min-width: 1200px) {
+    .nav-links {
+        gap: 40px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+        padding: 10px 0;
+    }
+
+    .admin-nav-link {
+        padding: 10px 20px !important;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1320px;
+    }
+
+    .bar {
+        height: 85px;
+    }
+
+    .logo-section img {
+        height: 65px;
+    }
+
+    .nav-links {
+        gap: 45px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+
+    .bar {
+        height: 90px;
+    }
+
+    .logo-section img {
+        height: 70px;
+    }
+
+    .nav-links {
+        gap: 50px;
+    }
+
+    .nav-links a {
+        font-size: 17px;
+    }
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .nav-links a,
+    .lang-option,
+    .hamburger {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-btns .dark-mode-toggle {
+        min-height: 48px;
+    }
+
+    .lang-btn,
+    .signin-btn {
+        min-height: 48px;
+    }
+
+    .close-x {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .submit-btn {
+        min-height: 48px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .navbar-main,
+    .nav-links,
+    .nav-btns,
+    .lang-dropdown,
+    .reg-overlay,
+    .reg-content,
+    .modal-icon,
+    .decoration-circle {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .navbar-main {
+        border-bottom: 2px solid currentColor;
+    }
+
+    .nav-links a::after {
+        height: 3px;
+    }
+
+    .admin-nav-link,
+    .signin-btn,
+    .submit-btn {
+        border: 2px solid white;
+    }
+}
+
+/* Landscape phone specific */
+@media (max-width: 768px) and (max-height: 500px) and (orientation: landscape) {
+    .nav-links {
+        padding: 12px 0 110px 0;
+        gap: 16px;
+    }
+
+    .nav-links a {
+        padding: 8px 0;
+    }
+
+    .nav-btns {
+        padding: 10px 0;
+    }
+
+    .nav-btns .dark-mode-toggle,
+    .lang-btn,
+    .signin-btn {
+        height: 40px;
+    }
+
+    .lang-dropdown {
+        bottom: 65px;
+    }
+}
+
+/* Sticky navbar improvements */
+@media (max-width: 768px) {
+    .navbar-main.scrolled .bar {
+        height: 65px;
+    }
+
+    .navbar-main.scrolled .logo-section img {
+        height: 45px;
+    }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: max(0px)) {
+    @media (max-width: 768px) {
+        .nav-links {
+            padding-left: max(0px, env(safe-area-inset-left));
+            padding-right: max(0px, env(safe-area-inset-right));
+        }
+
+        .nav-btns {
+            padding-left: max(0px, env(safe-area-inset-left));
+            padding-right: max(0px, env(safe-area-inset-right));
+            padding-bottom: max(15px, env(safe-area-inset-bottom));
+        }
+    }
 }

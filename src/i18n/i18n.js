@@ -10,6 +10,9 @@ const resources = {
       "nav.results": "Natijalar",
       "nav.location": "Manzil",
       "nav.signin": "Ro'yxatdan o'tish",
+      "nav.testimonials": "Sharhlar",
+      "nav.teachers": "O'qituvchilar",
+      "nav.admin": "Admin",
       
       "home.hero.title": "Wall Street",
       "home.hero.subtitle": "O'quv markaziga xush kelibsiz",
@@ -127,7 +130,9 @@ const resources = {
       "footer.kids": "Bolalar uchun ingliz tili",
       "footer.business": "Business English",
       "footer.contact": "Biz bilan bog'laning",
-      "footer.rights": "© 2026 Wall Street Learning Center. Barcha huquqlar himoyalangan."
+      "footer.rights": "© 2026 Wall Street Learning Center. Barcha huquqlar himoyalangan.",
+      
+      "admin.password": "Parolni kiriting"
     }
   },
   en: {
@@ -138,6 +143,9 @@ const resources = {
       "nav.results": "Results",
       "nav.location": "Location",
       "nav.signin": "Sign in",
+      "nav.testimonials": "Testimonials",
+      "nav.teachers": "Teachers",
+      "nav.admin": "Admin",
       
       "home.hero.title": "Wall Street",
       "home.hero.subtitle": "Welcome to the Learning Center",
@@ -255,7 +263,9 @@ const resources = {
       "footer.kids": "English for Kids",
       "footer.business": "Business English",
       "footer.contact": "Contact Us",
-      "footer.rights": "© 2026 Wall Street Learning Center. All rights reserved."
+      "footer.rights": "© 2026 Wall Street Learning Center. All rights reserved.",
+      
+      "admin.password": "Enter password"
     }
   },
   ru: {
@@ -266,6 +276,9 @@ const resources = {
       "nav.results": "Результаты",
       "nav.location": "Адрес",
       "nav.signin": "Регистрация",
+      "nav.testimonials": "Отзывы",
+      "nav.teachers": "Преподаватели",
+      "nav.admin": "Админ",
       
       "home.hero.title": "Wall Street",
       "home.hero.subtitle": "Добро пожаловать в учебный центр",
@@ -383,7 +396,9 @@ const resources = {
       "footer.kids": "Английский для детей",
       "footer.business": "Деловой английский",
       "footer.contact": "Свяжитесь с нами",
-      "footer.rights": "© 2026 Wall Street Learning Center. Все права защищены."
+      "footer.rights": "© 2026 Wall Street Learning Center. Все права защищены.",
+      
+      "admin.password": "Введите пароль"
     }
   }
 };

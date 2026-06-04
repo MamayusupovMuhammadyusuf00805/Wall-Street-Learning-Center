@@ -68,7 +68,7 @@ const levelStyles = {
 };
 
 function Admin() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
@@ -229,19 +229,23 @@ function Admin() {
             </div>
             <form onSubmit={handleLogin} className="login-form">
               <div className="input-group">
-                <i className="fa-solid fa-lock"></i>
                 <input
                   type={showPassword ? "text" : "password"}
-                  placeholder="Parolni kiriting"
+                  name="password"
+                  placeholder=" "
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  autoComplete="current-password"
                 />
+                <i className="fa-solid fa-lock"></i>
+                <label>{t('admin.password')}</label>
                 <button
                   type="button"
                   className="toggle-password"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label="Toggle password visibility"
+                  tabIndex="-1"
                 >
                   <i className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                 </button>

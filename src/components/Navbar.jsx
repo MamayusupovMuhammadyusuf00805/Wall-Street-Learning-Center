@@ -10,7 +10,7 @@ function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [formData, setFormData] = useState({ name: '', phone: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '+998 ' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const location = useLocation();
@@ -40,7 +40,7 @@ function Navbar() {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
     setSubmitStatus(null);
-    setFormData({ name: '', phone: '' });
+    setFormData({ name: '', phone: '+998 ' });
   };
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -52,13 +52,53 @@ function Navbar() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    if (name === 'name') {
+      // Faqat harflar va bo'sh joylar ruxsat etiladi
+      const onlyLetters = value.replace(/[^a-zA-Zа-яА-ЯўғҳқўҒҲҚЎ\s]/g, '');
+      setFormData(prev => ({ ...prev, [name]: onlyLetters }));
+    } else if (name === 'phone') {
+      // Faqat raqamlar
+      const onlyNumbers = value.replace(/\D/g, '');
+      
+      // 998 ni o'chirmaslik
+      if (!onlyNumbers.startsWith('998')) {
+        setFormData(prev => ({ ...prev, [name]: '+998 ' }));
+        return;
+      }
+      
+      // Raqamlarni formatlash: +998 (XX) XXX-XX-XX
+      let formatted = '+998';
+      const digits = onlyNumbers.slice(3); // 998 dan keyingi raqamlar
+      
+      if (digits.length > 0) {
+        formatted += ' (' + digits.slice(0, 2);
+        if (digits.length > 2) {
+          formatted += ') ' + digits.slice(2, 5);
+          if (digits.length > 5) {
+            formatted += '-' + digits.slice(5, 7);
+            if (digits.length > 7) {
+              formatted += '-' + digits.slice(7, 9);
+            }
+          }
+        } else {
+          formatted += ')';
+        }
+      }
+      
+      setFormData(prev => ({ ...prev, [name]: formatted }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.phone) {
+    // Telefon raqamdan faqat raqamlarni olish
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    
+    if (!formData.name || phoneDigits.length < 12) {
       alert('Iltimos, barcha maydonlarni to\'ldiring!');
       return;
     }
@@ -70,7 +110,7 @@ function Navbar() {
       await sendToTelegram(formData);
       
       setSubmitStatus('success');
-      setFormData({ name: '', phone: '' });
+      setFormData({ name: '', phone: '+998 ' });
       
       setTimeout(() => {
         setIsModalOpen(false);
@@ -124,13 +164,19 @@ function Navbar() {
                 <NavLink to="/results">{t('nav.results')}</NavLink>
               </li>
               <li>
-                <NavLink to="/testimonials">Sharhlar</NavLink>
+                <NavLink to="/testimonials">{t('nav.testimonials')}</NavLink>
               </li>
               <li>
-                <NavLink to="/teachers">O'qituvchilar</NavLink>
+                <NavLink to="/teachers">{t('nav.teachers')}</NavLink>
               </li>
               <li>
                 <NavLink to="/location">{t('nav.location')}</NavLink>
+              </li>
+              <li>
+                <NavLink to="/admin" className="admin-nav-link">
+                  <i className="fa-solid fa-user-shield"></i>
+                  {t('nav.admin')}
+                </NavLink>
               </li>
             </ul>
 
@@ -233,28 +279,32 @@ function Navbar() {
             
             <form className="reg-form" onSubmit={handleSubmit}>
               <div className="input-group">
-                <i className="fa-solid fa-user"></i>
                 <input 
                   type="text" 
                   name="name"
-                  placeholder={t('register.name')}
+                  placeholder=" "
                   value={formData.name}
                   onChange={handleInputChange}
                   required 
                   disabled={isSubmitting}
+                  autoComplete="off"
                 />
+                <i className="fa-solid fa-user"></i>
+                <label>{t('register.name')}</label>
               </div>
               <div className="input-group">
-                <i className="fa-solid fa-phone"></i>
                 <input 
-                  type="tel" 
+                  type="text" 
                   name="phone"
-                  placeholder={t('register.phone')}
+                  placeholder="+998 (XX) XXX-XX-XX"
                   value={formData.phone}
                   onChange={handleInputChange}
                   required 
                   disabled={isSubmitting}
+                  maxLength="19"
+                  autoComplete="off"
                 />
+                <i className="fa-solid fa-phone"></i>
               </div>
               <button 
                 type="submit" 

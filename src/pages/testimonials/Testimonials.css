@@ -258,3 +258,252 @@
         font-size: 14px;
     }
 }
+
+
+/* ============================================
+   ENHANCED RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+/* Ultra small devices */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .testimonials-page {
+        padding: 25px 0;
+    }
+
+    .testimonials-header {
+        margin-bottom: 40px;
+    }
+
+    .testimonials-header h1 {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    .testimonials-header p {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+
+    .admin-link-btn {
+        padding: 10px 24px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .testimonials-grid {
+        gap: 18px;
+    }
+
+    .testimonial-card {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .testimonial-card::before {
+        font-size: 100px;
+        top: -18px;
+        left: 16px;
+    }
+
+    .testimonial-header {
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .testimonial-avatar {
+        width: 56px;
+        height: 56px;
+        border-width: 2px;
+    }
+
+    .testimonial-info h3 {
+        font-size: 15px;
+        margin-bottom: 3px;
+    }
+
+    .course-name {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    .rating {
+        gap: 3px;
+    }
+
+    .rating i {
+        font-size: 13px;
+    }
+
+    .testimonial-text {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+
+    .testimonial-date {
+        font-size: 12px;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 320px) {
+    .testimonials-header h1 {
+        font-size: 24px;
+    }
+
+    .testimonials-header p {
+        font-size: 14px;
+    }
+
+    .testimonial-card {
+        padding: 16px;
+    }
+
+    .testimonial-avatar {
+        width: 52px;
+        height: 52px;
+    }
+
+    .testimonial-info h3 {
+        font-size: 14px;
+    }
+
+    .course-name {
+        font-size: 11px;
+    }
+
+    .testimonial-text {
+        font-size: 12px;
+    }
+}
+
+/* Tablet landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .testimonials-page {
+        padding: 45px 0;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    .testimonial-card {
+        padding: 22px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+        gap: 35px;
+    }
+
+    .testimonial-card {
+        padding: 35px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 40px;
+    }
+
+    .testimonial-card {
+        padding: 40px;
+    }
+
+    .testimonial-card::before {
+        font-size: 140px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+
+    .testimonials-header h1 {
+        font-size: 48px;
+    }
+
+    .testimonials-header p {
+        font-size: 22px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+        gap: 45px;
+    }
+
+    .testimonial-card {
+        padding: 45px;
+    }
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .testimonial-card {
+        cursor: default;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .admin-link-btn {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .testimonial-card {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Empty state */
+.testimonials-grid:empty::before {
+    content: 'Hali sharhlar yo\'q';
+    display: block;
+    text-align: center;
+    padding: 80px 20px;
+    color: #64748b;
+    font-size: 18px;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 480px) {
+    .testimonials-grid:empty::before {
+        padding: 60px 16px;
+        font-size: 16px;
+    }
+}
+
+/* Rating accessibility */
+.rating[aria-label]::after {
+    content: attr(aria-label);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}

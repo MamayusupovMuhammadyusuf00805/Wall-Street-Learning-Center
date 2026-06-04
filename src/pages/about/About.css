@@ -128,11 +128,11 @@
     align-items: center;
     margin-bottom: 20px;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
     border-radius: 20px;
-    border: 1px solid rgba(226, 232, 240, 0.5);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 8px 32px rgba(11, 61, 124, 0.1);
     animation: fadeInDown 0.6s ease-out;
 }
 
@@ -687,4 +687,156 @@
 .admin-link-btn span {
     position: relative;
     z-index: 1;
+}
+
+
+/* ============================================
+   ENHANCED RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+/* Ultra small devices */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .top {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .top1 h1 {
+        font-size: 22px;
+    }
+
+    .top1 p {
+        font-size: 13px;
+    }
+
+    .courses-grid {
+        gap: 16px;
+    }
+
+    .course-card {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .course-card__title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .course-card__desc {
+        font-size: 13px;
+        min-height: 65px;
+        margin-bottom: 20px;
+    }
+
+    .course-card__footer {
+        font-size: 12px;
+        gap: 10px;
+    }
+
+    .modal-content {
+        padding: 22px 18px;
+        border-radius: 14px;
+    }
+
+    .modal-header h2 {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 320px) {
+    .top1 h1 {
+        font-size: 20px;
+    }
+
+    .course-card {
+        padding: 16px;
+    }
+
+    .course-card__title {
+        font-size: 17px;
+    }
+
+    .course-card__desc {
+        font-size: 12px;
+        min-height: 60px;
+    }
+}
+
+/* Tablet landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .courses-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .courses-section {
+        padding: 50px 0;
+    }
+
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .course-card {
+        padding: 20px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1440px) {
+    .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 32px;
+    }
+
+    .course-card {
+        padding: 32px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 36px;
+    }
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .course-card {
+        padding: 26px;
+    }
+
+    .icon-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .add-btn {
+        padding: 14px 26px;
+        font-size: 16px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .course-card,
+    .course-card::before {
+        animation: none !important;
+        transition: none !important;
+    }
 }

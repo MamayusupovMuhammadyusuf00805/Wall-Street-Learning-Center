@@ -1273,3 +1273,287 @@
         font-size: 12px;
     }
 }
+
+
+/* ============================================
+   ADDITIONAL RESPONSIVE ENHANCEMENTS
+   ============================================ */
+
+/* Ultra-wide screens optimization */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1500px;
+    }
+
+    .location-header h1 {
+        font-size: 52px;
+    }
+
+    .location-header p {
+        font-size: 20px;
+    }
+
+    .location-grid {
+        grid-template-columns: 560px 1fr;
+        gap: 50px;
+    }
+
+    .info-card {
+        padding: 40px;
+    }
+
+    .card-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 36px;
+    }
+
+    .address-card h3 {
+        font-size: 28px;
+    }
+
+    .info-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+
+    .map-side {
+        height: 700px;
+    }
+}
+
+/* Desktop large screens */
+@media (min-width: 1440px) {
+    .location-header h1 {
+        font-size: 50px;
+    }
+
+    .location-grid {
+        grid-template-columns: 540px 1fr;
+        gap: 45px;
+    }
+
+    .info-card {
+        padding: 38px;
+    }
+
+    .map-side {
+        height: 680px;
+    }
+}
+
+/* Tablet landscape improvements */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .location-section {
+        padding: 55px 0;
+    }
+
+    .location-header {
+        margin-bottom: 45px;
+    }
+
+    .location-grid {
+        gap: 32px;
+    }
+
+    .map-side {
+        height: 500px;
+    }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+    .info-row {
+        padding: 18px;
+        cursor: default;
+    }
+
+    .action-btn {
+        min-height: 48px;
+        font-size: 16px;
+    }
+
+    .hour-item {
+        padding: 16px 0;
+        font-size: 15px;
+    }
+
+    .map-control-btn {
+        min-height: 44px;
+        padding: 12px 22px;
+        font-size: 15px;
+    }
+
+    .zoom-btn {
+        min-width: 48px;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .shape-1,
+    .shape-2,
+    .shape-3,
+    .info-card::before,
+    .hours-card::after,
+    .status-dot {
+        animation: none !important;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .info-card,
+    .map-side {
+        border: 2px solid currentColor;
+    }
+
+    .action-btn.primary {
+        border: 2px solid white;
+    }
+
+    .action-btn.secondary {
+        border-width: 3px;
+    }
+
+    .info-row {
+        border: 1px solid currentColor;
+    }
+}
+
+/* Print optimization */
+@media print {
+    .location-background-shapes {
+        display: none;
+    }
+
+    .location-section {
+        background: white;
+        padding: 40px 0;
+    }
+
+    .location-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .info-card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+
+    .map-side {
+        height: 400px;
+    }
+
+    .map-overlay-controls {
+        display: none;
+    }
+
+    .action-buttons {
+        display: none;
+    }
+}
+
+/* Very narrow screens */
+@media (max-width: 360px) {
+    .header-badge {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+
+    .location-header h1 {
+        font-size: 26px;
+    }
+
+    .card-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+    }
+
+    .address-card h3 {
+        font-size: 20px;
+    }
+
+    .info-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .info-value {
+        font-size: 12px;
+    }
+
+    .action-btn span {
+        font-size: 13px;
+    }
+
+    .hours-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
+    }
+
+    .hours-title h3 {
+        font-size: 18px;
+    }
+
+    .map-side {
+        height: 380px;
+    }
+}
+
+/* Ultra small height (very short landscape) */
+@media (max-height: 400px) and (orientation: landscape) {
+    .location-section {
+        padding: 30px 0;
+    }
+
+    .location-header {
+        margin-bottom: 30px;
+    }
+
+    .location-header h1 {
+        font-size: 30px;
+    }
+
+    .info-card {
+        padding: 20px;
+    }
+
+    .map-side {
+        height: 350px;
+    }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: max(0px)) {
+    @media (max-width: 768px) {
+        .container {
+            padding-left: max(15px, env(safe-area-inset-left));
+            padding-right: max(15px, env(safe-area-inset-right));
+        }
+    }
+}
+
+/* Dark mode responsive adjustments */
+@media (max-width: 768px) {
+    body.dark-mode .info-card,
+    body.dark-mode .map-side {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (max-width: 480px) {
+    body.dark-mode .info-card {
+        padding: 22px;
+    }
+}

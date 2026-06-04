@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import './About.css';
 
 function About() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const observerRef = useRef(null);
 
@@ -104,10 +102,6 @@ function About() {
             <h1>{t('about.title')}</h1>
             <p>{t('about.subtitle')}</p>
           </div>
-          <button className="admin-link-btn" onClick={() => navigate('/admin')}>
-            <i className="fa-solid fa-user-shield"></i>
-            <span>Admin Panel</span>
-          </button>
         </div>
 
         <div className="courses-grid scroll-animate">

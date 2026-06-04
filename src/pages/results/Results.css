@@ -404,3 +404,213 @@ body.dark-mode .empty-state p {
         height: 45px;
     }
 }
+
+
+/* ============================================
+   ENHANCED RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+/* Ultra small devices */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .resultspage {
+        padding: 25px 0;
+    }
+
+    .results-header {
+        margin-bottom: 35px;
+    }
+
+    .res1 {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    .res2 {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+
+    .admin-link-btn {
+        padding: 10px 24px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .results-grid {
+        gap: 18px;
+    }
+
+    .result-image {
+        height: 280px;
+    }
+
+    .result-overlay i {
+        font-size: 36px;
+    }
+
+    .close-btn {
+        top: 12px;
+        right: 12px;
+        font-size: 32px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .modal-image {
+        max-width: 96%;
+        max-height: 88%;
+        border-radius: 10px;
+    }
+
+    .empty-state {
+        padding: 60px 16px;
+    }
+
+    .empty-state i {
+        font-size: 70px;
+        margin-bottom: 16px;
+    }
+
+    .empty-state h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    .empty-state p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 320px) {
+    .res1 {
+        font-size: 24px;
+    }
+
+    .res2 {
+        font-size: 14px;
+    }
+
+    .result-image {
+        height: 260px;
+    }
+
+    .result-overlay i {
+        font-size: 32px;
+    }
+}
+
+/* Tablet landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 24px;
+    }
+
+    .result-image {
+        height: 320px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .resultspage {
+        padding: 45px 0;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .result-image {
+        height: 240px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1440px) {
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 32px;
+    }
+
+    .result-image {
+        height: 380px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+
+    .res1 {
+        font-size: 48px;
+    }
+
+    .res2 {
+        font-size: 22px;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 36px;
+    }
+
+    .result-image {
+        height: 400px;
+    }
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .result-card {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .close-btn {
+        width: 56px;
+        height: 56px;
+        font-size: 44px;
+    }
+
+    .admin-link-btn {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .result-card,
+    .result-image,
+    .result-overlay i {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* High resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .result-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Very small height devices (landscape phones) */
+@media (max-height: 500px) and (orientation: landscape) {
+    .modal-image {
+        max-height: 80vh;
+    }
+
+    .close-btn {
+        top: 8px;
+        right: 8px;
+    }
+}

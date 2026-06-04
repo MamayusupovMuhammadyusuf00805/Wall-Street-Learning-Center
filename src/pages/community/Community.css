@@ -440,74 +440,119 @@
 }
 
 .modal-content {
-    background: white;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
     width: 90%;
-    max-width: 500px;
-    border-radius: 24px;
-    padding: 40px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 520px;
+    border-radius: 32px;
+    padding: 45px;
+    box-shadow: 
+        0 30px 90px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    animation: slideUpScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     max-height: 90vh;
     overflow-y: auto;
 }
 
-@keyframes slideUp {
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #0B3D7C 0%, #3b82f6 50%, #8b5cf6 100%);
+    border-radius: 32px 32px 0 0;
+}
+
+@keyframes slideUpScale {
     from {
         opacity: 0;
-        transform: translateY(50px) scale(0.9);
+        transform: translateY(80px) scale(0.85) rotateX(15deg);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0) scale(1) rotateX(0deg);
     }
 }
 
 .modal-close {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #f1f5f9;
+    top: 22px;
+    right: 22px;
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 20px;
-    color: #64748b;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-size: 22px;
+    color: #ef4444;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
 }
 
 .modal-close:hover {
-    background: #fee2e2;
-    color: #ef4444;
-    transform: rotate(90deg);
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    transform: rotate(180deg) scale(1.15);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+.modal-close:active {
+    transform: rotate(180deg) scale(1.05);
 }
 
 .modal-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 .modal-header i {
-    font-size: 50px;
-    color: #0B3D7C;
-    margin-bottom: 15px;
+    font-size: 60px;
+    background: linear-gradient(135deg, #0B3D7C 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: iconFloat 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
 }
 
 .modal-header h2 {
-    font-size: 26px;
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
 }
 
 .modal-header p {
     font-size: 15px;
     color: #64748b;
+    font-weight: 500;
+    margin: 0;
+    max-width: 350px;
 }
 
 .alert {
@@ -558,7 +603,7 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .form-group label {
@@ -567,24 +612,35 @@
     color: #334155;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    transition: color 0.3s ease;
 }
 
 .form-group label i {
     color: #0B3D7C;
-    font-size: 16px;
+    font-size: 17px;
+    transition: transform 0.3s ease;
+}
+
+.form-group:focus-within label {
+    color: #0B3D7C;
+}
+
+.form-group:focus-within label i {
+    transform: scale(1.15);
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 14px 16px;
+    padding: 16px 18px;
     border: 2px solid #e2e8f0;
-    border-radius: 12px;
+    border-radius: 14px;
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     background: #f8fafc;
+    font-weight: 500;
 }
 
 .form-group input:focus,
@@ -592,7 +648,10 @@
     outline: none;
     border-color: #0B3D7C;
     background: white;
-    box-shadow: 0 0 0 4px rgba(11, 61, 124, 0.1);
+    box-shadow: 
+        0 0 0 4px rgba(11, 61, 124, 0.1),
+        0 4px 12px rgba(11, 61, 124, 0.1);
+    transform: translateY(-2px);
 }
 
 .form-group input:disabled,
@@ -602,26 +661,47 @@
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, #0B3D7C 0%, #1e5a9e 100%);
+    background: linear-gradient(135deg, #0B3D7C 0%, #3b82f6 50%, #8b5cf6 100%);
     color: white;
     border: none;
-    padding: 16px;
-    border-radius: 12px;
-    font-size: 16px;
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 17px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-    box-shadow: 0 4px 12px rgba(11, 61, 124, 0.3);
+    gap: 12px;
+    margin-top: 15px;
+    box-shadow: 0 8px 20px rgba(11, 61, 124, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
 }
 
 .submit-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(11, 61, 124, 0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(11, 61, 124, 0.4);
+}
+
+.submit-btn:active:not(:disabled) {
+    transform: translateY(-1px) scale(0.98);
 }
 
 .submit-btn:disabled {
@@ -630,7 +710,12 @@
 }
 
 .submit-btn i {
-    font-size: 18px;
+    font-size: 19px;
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover:not(:disabled) i {
+    transform: translateX(5px);
 }
 
 @media (max-width: 768px) {
@@ -670,5 +755,223 @@
     .submit-btn {
         padding: 14px;
         font-size: 15px;
+    }
+}
+
+
+/* ============================================
+   ENHANCED RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+/* Ultra small devices */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .community-page {
+        padding: 25px 0;
+    }
+
+    .community-header {
+        margin-bottom: 40px;
+    }
+
+    .community-header h1 {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    .community-header p {
+        font-size: 14px;
+    }
+
+    .community-grid {
+        gap: 16px;
+        margin-bottom: 40px;
+    }
+
+    .community-card {
+        padding: 26px 18px;
+        border-radius: 16px;
+    }
+
+    .community-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 18px;
+    }
+
+    .community-icon i {
+        font-size: 24px;
+    }
+
+    .community-card h3 {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .community-card p {
+        font-size: 13px;
+    }
+
+    .cta-section {
+        padding: 35px 20px;
+        border-radius: 18px;
+    }
+
+    .cta-section h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .cta-section p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .modal-content {
+        padding: 28px 22px;
+        max-width: 96%;
+        border-radius: 28px;
+    }
+
+    .modal-header i {
+        font-size: 50px;
+    }
+
+    .modal-header h2 {
+        font-size: 24px;
+    }
+
+    .modal-header p {
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 14px 16px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    .submit-btn {
+        padding: 16px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .community-header h1 {
+        font-size: 24px;
+    }
+
+    .community-card {
+        padding: 24px 16px;
+    }
+
+    .community-icon {
+        width: 55px;
+        height: 55px;
+    }
+
+    .cta-section h2 {
+        font-size: 20px;
+    }
+}
+
+/* Tablet landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .community-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+
+    .cta-section {
+        padding: 55px 35px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .community-page {
+        padding: 45px 0;
+    }
+
+    .community-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    .community-card {
+        padding: 30px 20px;
+    }
+
+    .cta-section {
+        padding: 45px 28px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1440px) {
+    .community-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 35px;
+    }
+
+    .community-card {
+        padding: 45px 35px;
+    }
+
+    .cta-section {
+        padding: 70px 50px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .community-header h1 {
+        font-size: 48px;
+    }
+
+    .community-header p {
+        font-size: 20px;
+    }
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .community-card {
+        padding: 38px 28px;
+    }
+
+    .cta-button {
+        padding: 18px 44px;
+        font-size: 18px;
+    }
+
+    .modal-close {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .community-card,
+    .community-icon,
+    .cta-section::before,
+    .modal-content::before {
+        animation: none !important;
     }
 }
