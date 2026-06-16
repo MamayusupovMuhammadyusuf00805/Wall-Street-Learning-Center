@@ -137,32 +137,55 @@
 
 .level-row__progress-fill1 {
     height: 100%;
-    background: linear-gradient(90deg, #003d82 0%, #0066cc 100%);
+    background: linear-gradient(90deg, #0ea5e9 0%, #3b82f6 50%, #6366f1 100%);
     border-radius: 10px;
     width: 0;
-    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    box-shadow: 
+        0 0 20px rgba(59, 130, 246, 0.4),
+        0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.level-row__progress-fill1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 /* Animatsiya klassi ishlaganda foizlar o'rnatilishi */
 .scroll-animate.animate-in .level-row:nth-child(1) .level-row__progress-fill1 {
     width: 36%;
-    transition-delay: 0.2s;
+    transition-delay: 0.3s;
 }
 
 .scroll-animate.animate-in .level-row:nth-child(2) .level-row__progress-fill1 {
     width: 66%;
-    transition-delay: 0.3s;
+    transition-delay: 0.5s;
 }
 
 .scroll-animate.animate-in .level-row:nth-child(3) .level-row__progress-fill1 {
     width: 77%;
-    transition-delay: 0.4s;
+    transition-delay: 0.7s;
 }
 
 .scroll-animate.animate-in .level-row:nth-child(4) .level-row__progress-fill1 {
     width: 86%;
-    transition-delay: 0.5s;
+    transition-delay: 0.9s;
 }
 
 /* --------------------------------------------- */
@@ -340,20 +363,48 @@
 
 .level-card {
     width: 100%;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 30px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #dbeafe 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 20px;
+    padding: 40px;
     box-sizing: border-box;
     margin: 30px 0;
     animation: fadeInUp 0.8s ease-out 0.5s both;
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.level-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0ea5e9, #3b82f6, #6366f1, #8b5cf6);
+    background-size: 200% 100%;
+    animation: shimmerTop 3s linear infinite;
+}
+
+@keyframes shimmerTop {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .level-card__title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 28px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 35px;
+    text-shadow: none;
 }
 
 .level-card__list {
@@ -399,54 +450,85 @@
 }
 
 .level-row__badge {
-    width: 160px;
-    padding: 8px 0;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
+    width: 180px;
+    padding: 10px 0;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+    letter-spacing: 0.5px;
 }
 
 .level-row:hover .level-row__badge {
-    transform: scale(1.05);
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
 }
 
 .level-row__progress-wrapper {
     flex-grow: 1;
-    height: 10px;
-    background-color: #f1f5f9;
+    height: 12px;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
     border-radius: 10px;
     overflow: hidden;
     position: relative;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 
+        0 0 0 1px rgba(59, 130, 246, 0.1) inset,
+        0 2px 8px rgba(59, 130, 246, 0.1);
 }
 
 .level-row__count {
-    font-size: 15px;
-    color: #64748b;
-    min-width: 20px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    min-width: 30px;
     text-align: right;
-    font-weight: 600;
+    font-weight: 800;
+    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.2));
 }
 
 .level-row__badge--blue {
-    background-color: #dbeafe;
-    color: #1e40af;
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+    color: #ffffff;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 
+        0 4px 15px rgba(14, 165, 233, 0.3),
+        0 0 0 1px rgba(14, 165, 233, 0.2);
 }
 
 .level-row__badge--indigo {
-    background-color: #e0e7ff;
-    color: #4338ca;
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    color: #ffffff;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 
+        0 4px 15px rgba(59, 130, 246, 0.3),
+        0 0 0 1px rgba(59, 130, 246, 0.2);
 }
 
 .level-row__badge--purple {
-    background-color: #f3e8ff;
-    color: #7c3aed;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #ffffff;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 
+        0 4px 15px rgba(99, 102, 241, 0.3),
+        0 0 0 1px rgba(99, 102, 241, 0.2);
 }
 
 .level-row__badge--red {
-    background-color: #fee2e2;
-    color: #dc2626;
+    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+    color: #ffffff;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 
+        0 4px 15px rgba(139, 92, 246, 0.3),
+        0 0 0 1px rgba(139, 92, 246, 0.2);
 }
 
 .section1 {
